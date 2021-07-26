@@ -20,6 +20,15 @@ public class PlayerController : MonoBehaviour
 
     public float groundedRaycastLength = 0.01f;
 
+    
+
+    
+    public Vector2 velocityDecay = new Vector2(0.2f, 0.2f);
+    Vector2 movementValues;
+    Vector2 velocity;
+
+
+
     bool IsGrounded()
     {
         Debug.Log("checking");
@@ -33,7 +42,6 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    Vector2 movementValues;
 
     private void Awake()
     {
@@ -50,28 +58,31 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //rb.AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);
-        //Debug.Log("Updating, frame " + Time.frameCount);
         jumpTimer += Time.deltaTime;
-        if (Input.GetButtonDown("Jump")/* && jumpTimer >= jumpCooldown && IsGrounded() == true*/)
+        if (Input.GetButtonDown("Jump") && jumpTimer >= jumpCooldown/* && IsGrounded() == true*/)
         {
             jumpTimer = 0;
             Debug.Log("Jump on " + Time.frameCount);
 
-            rb.AddForce(transform.up * jumpHeight, ForceMode2D.Impulse);
-            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + jumpHeight);
+            rb.AddForce(transform.up * jumpHeight);
+
+            velocity.y += jumpHeight;
         }
 
-        Vector2 movementInput = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, 0);
-        movementValues = movementInput * Time.fixedDeltaTime;
-
-        
-
+        movementValues.x = Input.GetAxis("Horizontal") * movementSpeed;
     }
 
     private void FixedUpdate()
     {
-        Vector2 currentPosition = rb.transform.position;
-        rb.MovePosition(currentPosition + movementValues);
+        //Debug.Log(movementValues + ", " + velocity);
+        rb.MovePosition((Vector2)rb.transform.position + ((movementValues + velocity) * Time.fixedDeltaTime));
+        
+        if (velocity.magnitude > 0)
+        {
+            velocity -= velocityDecay * Time.fixedDeltaTime;
+            velocity.x = Mathf.Max(0, velocity.x);
+            velocity.y = Mathf.Max(0, velocity.y);
+        }
+        
     }
 }
