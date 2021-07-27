@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     float jumpTimer;
 
     public float groundedRaycastLength = 0.01f;
-
-    
+    public LayerMask groundingDetection = ~0;
 
     
     public Vector2 velocityDecay = new Vector2(0.2f, 0.2f);
@@ -31,14 +30,17 @@ public class PlayerController : MonoBehaviour
 
     bool IsGrounded()
     {
-        Debug.Log("checking");
-        if (Physics.Raycast(transform.position, -transform.up, groundedRaycastLength, ~0))
+        Debug.Log("Checking if grounded on frame " + Time.frameCount);
+        RaycastHit2D[] results;
+        ContactFilter2D cf;
+
+
+        if (Physics2D.Raycast(transform.position, -transform.up, cf, results, groundedRaycastLength, groundingDetection))
         {
-            Debug.Log("Is grounded");
+            //Debug.Log(rh.collider.name);
             return true;
         }
-
-        Debug.Log("Is not grounded");
+        Debug.Log("Tried jumping on frame " + Time.frameCount + " and it didn't work.");
         return false;
     }
 
@@ -58,13 +60,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.DrawRay(transform.position, -transform.up * 9, Color.red);
+        Debug.DrawRay(transform.position, -transform.up * groundedRaycastLength, Color.red);
+
+
         jumpTimer += Time.deltaTime;
-        if (Input.GetButtonDown("Jump") && jumpTimer >= jumpCooldown/* && IsGrounded() == true*/)
+        if (Input.GetButtonDown("Jump") && jumpTimer >= jumpCooldown && IsGrounded() == true)
         {
             jumpTimer = 0;
             Debug.Log("Jump on " + Time.frameCount);
 
-            rb.AddForce(transform.up * jumpHeight);
+            //rb.AddForce(transform.up * jumpHeight);
 
             velocity.y += jumpHeight;
         }
