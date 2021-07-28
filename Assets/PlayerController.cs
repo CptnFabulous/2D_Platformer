@@ -8,39 +8,36 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
+    
 
-    public float movementSpeed = 5;
 
+    public float movementSpeed = 8;
+    Vector2 movementValues;
 
 
     [Header("Jumping")]
-    public float jumpHeight = 5;
-    public float jumpCooldown = 1;
+    public float jumpHeight = 22;
+    public float jumpCooldown = 0.5f;
     float jumpTimer;
 
-    public float groundedRaycastLength = 0.01f;
+    public Vector2 groundBoxcastDimensions = new Vector2(1, 0.01f);
+    public float groundedRaycastLength = 0.1f;
     public LayerMask groundingDetection = ~0;
 
     
-    public Vector2 velocityDecay = new Vector2(0.2f, 0.2f);
-    Vector2 movementValues;
+    public Vector2 velocityDecay = new Vector2(30, 30);
     Vector2 velocity;
 
 
 
     bool IsGrounded()
     {
-        Debug.Log("Checking if grounded on frame " + Time.frameCount);
-        RaycastHit2D[] results;
-        ContactFilter2D cf;
-
-
-        if (Physics2D.Raycast(transform.position, -transform.up, cf, results, groundedRaycastLength, groundingDetection))
+        RaycastHit2D[] results = Physics2D.BoxCastAll(transform.position, groundBoxcastDimensions, transform.rotation.z, -transform.up, groundedRaycastLength, groundingDetection);
+        if (results.Length > 1 && results[0].collider.gameObject != this)
         {
-            //Debug.Log(rh.collider.name);
             return true;
         }
-        Debug.Log("Tried jumping on frame " + Time.frameCount + " and it didn't work.");
+
         return false;
     }
 
@@ -60,18 +57,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.DrawRay(transform.position, -transform.up * 9, Color.red);
-        Debug.DrawRay(transform.position, -transform.up * groundedRaycastLength, Color.red);
-
-
         jumpTimer += Time.deltaTime;
         if (Input.GetButtonDown("Jump") && jumpTimer >= jumpCooldown && IsGrounded() == true)
         {
             jumpTimer = 0;
-            Debug.Log("Jump on " + Time.frameCount);
-
-            //rb.AddForce(transform.up * jumpHeight);
-
             velocity.y += jumpHeight;
         }
 
@@ -80,7 +69,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Debug.Log(movementValues + ", " + velocity);
         rb.MovePosition((Vector2)rb.transform.position + ((movementValues + velocity) * Time.fixedDeltaTime));
         
         if (velocity.magnitude > 0)
