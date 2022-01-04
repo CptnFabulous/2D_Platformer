@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 [RequireComponent(typeof (Rigidbody2D))]
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rb;
     BoxCollider2D collider;
@@ -40,16 +40,17 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            RaycastHit2D[] results = Physics2D.BoxCastAll(transform.position, groundBoxcastDimensions, transform.rotation.z, -transform.up, groundedRaycastLength, groundingDetection);
-            if (results.Length > 1 && results[0].collider.gameObject != this)
+            RaycastHit2D[] groundingResults = Physics2D.BoxCastAll(transform.position, groundBoxcastDimensions, transform.rotation.z, -transform.up, groundedRaycastLength, groundingDetection);
+            if (groundingResults.Length > 1 && groundingResults[0].collider.gameObject != this)
             {
+                groundingData = groundingResults[0];
                 return true;
             }
-
+            groundingData = new RaycastHit2D();
             return false;
         }
     }
-
+    RaycastHit2D groundingData;
     
 
     private void Awake()
@@ -76,6 +77,15 @@ public class PlayerController : MonoBehaviour
         }
 
         movementValues.x = Input.GetAxis("Horizontal") * movementSpeed;
+        /*
+        if (IsGrounded)
+        {
+            float normalAngle = Vector2.SignedAngle(transform.up, groundingData.normal);
+            movementValues = Quaternion.Euler(0, 0, -normalAngle) * movementValues;
+            //Vector2 direction = 
+        }
+        */
+        Debug.DrawRay(transform.position, movementValues, Color.green);
     }
 
     void SetCrouch(bool isCrouching)
