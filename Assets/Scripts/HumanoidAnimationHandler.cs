@@ -55,12 +55,17 @@ public class HumanoidAnimationHandler : MonoBehaviour
         animator.SetFloat(aimDirectionY, aiming.aimDirection.y);
     }
 
-    public void PlaySound(string name)
+    public void PlaySound(string clipName)
     {
-        AudioClip clip = clips.Find((c) => c.name == name);
+        //Debug.Log("Attempting to play sound clip " + name + " on frame " + Time.frameCount);
+        AudioClip clip = clips.Find((c) => c.name == clipName);
         if (clip != null)
         {
             soundPlayer.PlayOneShot(clip);
+        }
+        else
+        {
+            Debug.LogError("HumanoidAnimationHandler " + name + " cannot find sound (" + clipName + ")!");
         }
     }
 }
