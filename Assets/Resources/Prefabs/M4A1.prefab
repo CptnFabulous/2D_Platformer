@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6330505970581345529}
   - component: {fileID: 4486047618782799596}
   - component: {fileID: 5631273664816012893}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ammo Meter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4849817733536904238}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: left hand grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 4849817733609021755}
   - component: {fileID: 4849817733609021754}
   - component: {fileID: 4849817733609021749}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: M4A1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4849817734375927270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,8 +291,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4849817734547788592}
   - component: {fileID: 4849817734547788593}
-  - component: {fileID: 4849817734547788595}
-  m_Layer: 0
+  - component: {fileID: 5180924552698189763}
+  - component: {fileID: 3017901538561058334}
+  m_Layer: 8
   m_Name: m4a1_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -412,7 +413,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4849817734649588086}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: right hand grip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -444,7 +445,7 @@ GameObject:
   - component: {fileID: 6348615526441600808}
   - component: {fileID: 7798560465434727037}
   - component: {fileID: 3724888447420193431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Segment
   m_TagString: Untagged
   m_Icon: {fileID: 0}

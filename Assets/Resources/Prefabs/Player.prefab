@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7396932752930730470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ammo Meter Socket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 1801684378360210979}
   - component: {fileID: 5259571137907782830}
   - component: {fileID: 9083757155122657821}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health Meter (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4750584117989039363}
   - component: {fileID: 3453359506584729568}
   - component: {fileID: 4332990313793611631}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 7073557678698408597}
   - component: {fileID: 7073557678698408596}
   - component: {fileID: 7073557678698408587}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7073557678880585706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponAxis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 7073557679281245211}
   - component: {fileID: 7073557679281245220}
   - component: {fileID: 8586417182373980085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 7073557679721358075}
   - component: {fileID: 7073557679721358073}
   - component: {fileID: 3289787925576259489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -717,7 +717,7 @@ GameObject:
   - component: {fileID: 8324603764210574915}
   - component: {fileID: 8492725869989379107}
   - component: {fileID: 7730032969673523090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Health Meter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -794,7 +794,7 @@ GameObject:
   - component: {fileID: 1022035875647790793}
   - component: {fileID: 6043772581410870487}
   - component: {fileID: 7634283780509262574}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Reticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
