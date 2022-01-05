@@ -366,8 +366,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4849817734547788595
-BoxCollider2D:
+--- !u!60 &5180924552698189763
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -389,9 +389,18 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.25, y: 0.4375}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.20209754, y: 0.22883415}
+      - {x: -0.5875567, y: 0.14388466}
+      - {x: -0.63232255, y: 0.09492874}
+      - {x: -0.62268746, y: -0.11592388}
+      - {x: -0.30986163, y: -0.018696785}
+      - {x: -0.3346311, y: -0.16775322}
+      - {x: -0.039762557, y: -0.2389574}
+      - {x: 0.65535843, y: 0.037558556}
+      - {x: 0.4129309, y: 0.16761017}
+      - {x: 0.04720205, y: 0.22499466}
 --- !u!1 &4849817734649588087
 GameObject:
   m_ObjectHideFlags: 0
