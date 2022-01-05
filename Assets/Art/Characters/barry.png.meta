@@ -4,40 +4,58 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -5609688742056919968
-    second: barry_idle_stiff
+    second: barry_0
   - first:
       213: -7940393880338084373
-    second: barry_idle_relaxed
+    second: barry_1
   - first:
       213: -6180678975646121260
-    second: barry_walk_0
+    second: barry_2
   - first:
       213: -2053634756044650030
-    second: barry_walk_1
+    second: barry_3
   - first:
       213: 3062879569191270771
-    second: barry_walk_2
+    second: barry_4
   - first:
       213: -5383471019582608309
-    second: barry_walk_3
+    second: barry_5
   - first:
       213: -1478759015094355855
-    second: barry_walk_4
+    second: barry_6
   - first:
       213: -1486138742333348138
-    second: barry_walk_5
+    second: barry_7
   - first:
       213: -4469798064493843527
-    second: barry_walk_6
+    second: barry_8
   - first:
       213: -1507929075333979813
-    second: barry_walk_7
+    second: barry_9
   - first:
       213: -7346337702562800384
-    second: barry_walk_8
+    second: barry_10
   - first:
       213: -9095518716992221231
-    second: barry_walk_9
+    second: barry_11
+  - first:
+      213: 7827833537127522767
+    second: barry_jump_windup
+  - first:
+      213: -7076341661493987377
+    second: barry_jump
+  - first:
+      213: -4752892179178566547
+    second: barry_airborne
+  - first:
+      213: -8413524952758824584
+    second: barry_falling
+  - first:
+      213: 4461615810801998954
+    second: barry_landing_0
+  - first:
+      213: -6860669285810098514
+    second: barry_landing_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -163,7 +181,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: barry_idle_stiff
+      name: barry_0
       rect:
         serializedVersion: 2
         x: 0
@@ -171,7 +189,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_idle_relaxed
+      name: barry_1
       rect:
         serializedVersion: 2
         x: 33
@@ -192,7 +210,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -205,7 +223,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_0
+      name: barry_2
       rect:
         serializedVersion: 2
         x: 0
@@ -213,7 +231,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -226,7 +244,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_1
+      name: barry_3
       rect:
         serializedVersion: 2
         x: 33
@@ -234,7 +252,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -247,7 +265,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_2
+      name: barry_4
       rect:
         serializedVersion: 2
         x: 66
@@ -255,7 +273,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,7 +286,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_3
+      name: barry_5
       rect:
         serializedVersion: 2
         x: 99
@@ -276,7 +294,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,7 +307,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_4
+      name: barry_6
       rect:
         serializedVersion: 2
         x: 132
@@ -297,7 +315,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,7 +328,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_5
+      name: barry_7
       rect:
         serializedVersion: 2
         x: 165
@@ -318,7 +336,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -331,7 +349,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_6
+      name: barry_8
       rect:
         serializedVersion: 2
         x: 198
@@ -339,7 +357,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -352,7 +370,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_7
+      name: barry_9
       rect:
         serializedVersion: 2
         x: 231
@@ -360,7 +378,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -373,7 +391,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_8
+      name: barry_10
       rect:
         serializedVersion: 2
         x: 264
@@ -381,7 +399,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -394,7 +412,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: barry_walk_9
+      name: barry_11
       rect:
         serializedVersion: 2
         x: 297
@@ -402,7 +420,7 @@ TextureImporter:
         width: 32
         height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -410,6 +428,132 @@ TextureImporter:
       bones: []
       spriteID: 1df03c1cae936c180800000000000000
       internalID: -9095518716992221231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_jump_windup
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc1206dd02d02ac60800000000000000
+      internalID: 7827833537127522767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_jump
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc77a5d30c8cbcd90800000000000000
+      internalID: -7076341661493987377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_airborne
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6c4454beb55a0eb0800000000000000
+      internalID: -4752892179178566547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_falling
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871dce9d1a72d3b80800000000000000
+      internalID: -8413524952758824584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_landing_0
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c9e17f0f7daed30800000000000000
+      internalID: 4461615810801998954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barry_landing_1
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 211
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eae2bd942a10ac0a0800000000000000
+      internalID: -6860669285810098514
       vertices: []
       indices: 
       edges: []

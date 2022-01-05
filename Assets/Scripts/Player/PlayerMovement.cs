@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 [RequireComponent(typeof (Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float movementSpeed = 8;
-    Vector2 movementValues;
+    public Vector2 movementValues { get; private set; }
 
 
     [Header("Jumping")]
     public float jumpForce = 350;
     public float jumpCooldown = 0.5f;
+    public UnityEvent onJump;
     float jumpTimer;
 
     public Vector2 groundBoxcastDimensions = new Vector2(1, 0.01f);
@@ -30,6 +29,13 @@ public class PlayerMovement : MonoBehaviour
     public float crouchHeight;
     public float crouchMovementSpeedMultiplier;
 
+    public Vector2 Velocity
+    {
+        get
+        {
+            return rigidbody.velocity;
+        }
+    }
 
 
 
@@ -41,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             if (groundingResults.Length > 1 && groundingResults[0].collider.gameObject != this)
             {
                 groundingData = groundingResults[0];
-                //ebug.Log("Grounded");
+                //Debug.Log("Grounded");
                 return true;
             }
             groundingData = new RaycastHit2D();
@@ -57,15 +63,6 @@ public class PlayerMovement : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
     }
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         jumpTimer += Time.deltaTime;
@@ -74,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
             jumpTimer = 0;
             //velocity.y += jumpHeight;
             rigidbody.AddForce(transform.up * jumpForce);
+            onJump.Invoke();
         }
 
         movementValues = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, 0);
