@@ -26,6 +26,8 @@ public class AimController : MonoBehaviour
     }
     
 
+    [Header("Gun")]
+    public Gun gun;
     
 
 
@@ -44,9 +46,9 @@ public class AimController : MonoBehaviour
         
         weaponAxis.LookAt(weaponAxis.position + aimDirection3D, transform.up);
 
+        if (Input.GetKey(KeyCode.Mouse0) && gun != null)
         {
-            float aimRadian = aimAngle * Mathf.Deg2Rad;
-            return new Vector2(Mathf.Cos(aimRadian), Mathf.Sin(aimRadian));
+            gun.Shoot();
         }
 
 
