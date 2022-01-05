@@ -163,6 +163,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 6f2f85ef48043f044bf68ed46d5dd444, type: 3}
   - {fileID: 8300000, guid: 71666bbd5c970f24498947d2b7fbe45e, type: 3}
+  - {fileID: 8300000, guid: ed283ac6ba635754ea48f98d08abdd93, type: 3}
 --- !u!50 &3453359506584729568
 Rigidbody2D:
   serializedVersion: 4
