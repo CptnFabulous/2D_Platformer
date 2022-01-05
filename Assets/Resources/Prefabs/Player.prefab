@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4520257803259062924
+--- !u!1 &3017011342379899959
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,7 +8,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2613701281876587023}
+  - component: {fileID: 7396932752930730470}
   m_Layer: 0
   m_Name: Ammo Meter Socket
   m_TagString: Untagged
@@ -16,20 +16,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2613701281876587023
-Transform:
+--- !u!224 &7396932752930730470
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4520257803259062924}
+  m_GameObject: {fileID: 3017011342379899959}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.75, y: 1, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7073557678470177831}
-  m_RootOrder: 3
+  m_Father: {fileID: 7073557678698408586}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 24, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6331149463283198526
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +146,6 @@ Transform:
   - {fileID: 7073557679721357828}
   - {fileID: 7073557679281245211}
   - {fileID: 7073557678880585706}
-  - {fileID: 2613701281876587023}
   - {fileID: 7073557678698408586}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -187,7 +191,7 @@ MonoBehaviour:
   weaponAxis: {fileID: 7073557678880585706}
   playerCamera: {fileID: 7073557679721358075}
   headsUpDisplay: {fileID: 7073557678698408597}
-  weaponHUDSocket: {fileID: 2613701281876587023}
+  weaponHUDSocket: {fileID: 7396932752930730470}
   reticle: {fileID: 6043772581410870487}
   reticleLine: {fileID: 7634283780509262574}
   minimumDistanceForReticleLine: 1.5
@@ -318,8 +322,9 @@ RectTransform:
   m_Children:
   - {fileID: 3451994992577183430}
   - {fileID: 8324603764210574915}
+  - {fileID: 7396932752930730470}
   m_Father: {fileID: 7073557678470177831}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
