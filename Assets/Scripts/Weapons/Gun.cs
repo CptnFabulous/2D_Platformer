@@ -10,9 +10,9 @@ public class Gun : MonoBehaviour
     public Rigidbody2D rigidbody;
 
     [Header("DPS")]
-    public UnityEvent onShoot;
-    public int projectileCount = 1;
+    public GunFireEffect shotEffect;
     public float roundsPerMinute = 600;
+    public UnityEvent onShoot;
     public float shotDelay
     {
         get
@@ -20,12 +20,6 @@ public class Gun : MonoBehaviour
             return 60 / roundsPerMinute;
         }
     }
-
-    [Header("Accuracy")]
-    public Transform muzzle;
-    public float spread = 1;
-    public float range = 100;
-    public ContactFilter2D filter;
 
     [Header("Ammunition")]
     public Resource capacity;
@@ -69,33 +63,8 @@ public class Gun : MonoBehaviour
         capacity.current -= ammoPerShot;
         meter.Refresh(capacity);
         onShoot.Invoke();
-        
-        for (int i = 0; i < projectileCount; i++)
-        {
-            AimController player = PlayerUsing;
-            float angle = player.AimAngle + Random.Range(-spread, spread);
-            Vector3 origin = player.weaponAxis.position;
-            Vector3 direction = player.AngleToAimDirection(angle);
 
-
-            RaycastHit2D[] results = new RaycastHit2D[2];
-            int rn = Physics2D.Raycast(origin, direction, filter, results, range);
-
-            //RaycastHit2D r = Physics2D.Raycast(origin, direction, range, filter.layerMask);
-
-            Vector3 target;
-            if (results[1].collider != null)
-            {
-                target = results[1].point;
-            }
-            else
-            {
-                target = origin + direction * range;
-            }
-
-            Debug.DrawLine(muzzle.position, target, Color.red, shotDelay);
-        }
-        
+        shotEffect.Shoot(PlayerUsing);
     }
 
     public void Pickup(AimController newPlayer)
