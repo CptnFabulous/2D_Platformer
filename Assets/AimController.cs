@@ -1,14 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AimController : MonoBehaviour
 {
     public Transform weaponAxis;
-    public Transform weaponHUDSocket;
     public Camera playerCamera;
 
+    [Header("Cosmetics")]
+    public Canvas headsUpDisplay;
+    public Transform weaponHUDSocket;
+    public Image reticle;
+    public LineRenderer reticleLine;
+    public float minimumDistanceForReticleLine = 1.5f;
 
+    Vector3 reticlePosition;
     public Vector2 aimDirection { get; private set; }
     public Vector3 aimDirection3D
     {
@@ -33,16 +40,8 @@ public class AimController : MonoBehaviour
 
     void Update()
     {
-        
-        
-        aimDirection = (Input.mousePosition - playerCamera.WorldToScreenPoint(weaponAxis.position)).normalized;
-        //Debug.DrawRay(weaponAxis.position, aimDirection * 5, Color.cyan);
-        //Debug.DrawRay(weaponAxis.position, AngleToAimDirection(AimAngle) * 5, Color.blue);
-
-
-
-
-        //aimAngle -= Input.GetAxis("RotateAim") * sensitivity * Time.deltaTime;
+        reticlePosition = Input.mousePosition;
+        aimDirection = (reticlePosition - playerCamera.WorldToScreenPoint(weaponAxis.position)).normalized;
         
         weaponAxis.LookAt(weaponAxis.position + aimDirection3D, transform.up);
 
@@ -50,12 +49,28 @@ public class AimController : MonoBehaviour
         {
             gun.Shoot();
         }
+    }
+    private void LateUpdate()
+    {
+        Vector3 reticleImagePosition = reticlePosition;
+        reticleImagePosition.z = Vector3.Distance(playerCamera.transform.position, headsUpDisplay.transform.position);
+        reticle.transform.position = playerCamera.ScreenToWorldPoint(reticleImagePosition);
 
+        if (Vector3.Distance(weaponAxis.position, reticle.transform.position) > minimumDistanceForReticleLine)
+        {
+            reticleLine.SetPosition(0, weaponAxis.position + (aimDirection3D * minimumDistanceForReticleLine));
+            reticleLine.SetPosition(1, reticle.transform.position);
+            reticleLine.enabled = true;
+        }
+        else
+        {
+            reticleLine.enabled = false;
+        }
 
-        //Debug.Log(direction + ", " + AimDirection(aimAngle));
+            
     }
 
-    
+
     public Vector2 AngleToAimDirection(float angle)
     {
         float aimRadian = angle * Mathf.Deg2Rad;
