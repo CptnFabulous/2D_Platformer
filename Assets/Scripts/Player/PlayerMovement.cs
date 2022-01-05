@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof (Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
+    public Rigidbody2D rigidbody { get; private set; }
     BoxCollider2D collider;
     
 
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("Jumping")]
-    public float jumpHeight = 22;
+    public float jumpForce = 350;
     public float jumpCooldown = 0.5f;
     float jumpTimer;
 
@@ -30,13 +30,10 @@ public class PlayerMovement : MonoBehaviour
     public float crouchHeight;
     public float crouchMovementSpeedMultiplier;
 
-    [Header("Physics")]
-    public Vector2 velocityDecay = new Vector2(30, 30);
-    Vector2 velocity;
 
 
 
-    bool IsGrounded
+    public bool IsGrounded
     {
         get
         {
@@ -44,9 +41,11 @@ public class PlayerMovement : MonoBehaviour
             if (groundingResults.Length > 1 && groundingResults[0].collider.gameObject != this)
             {
                 groundingData = groundingResults[0];
+                //ebug.Log("Grounded");
                 return true;
             }
             groundingData = new RaycastHit2D();
+            //Debug.Log("Airborne");
             return false;
         }
     }
@@ -55,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
     }
 
@@ -73,10 +72,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && jumpTimer >= jumpCooldown && IsGrounded == true)
         {
             jumpTimer = 0;
-            velocity.y += jumpHeight;
+            //velocity.y += jumpHeight;
+            rigidbody.AddForce(transform.up * jumpForce);
         }
 
-        movementValues.x = Input.GetAxis("Horizontal") * movementSpeed;
+        movementValues = new Vector2(Input.GetAxis("Horizontal") * movementSpeed, 0);
         /*
         if (IsGrounded)
         {
@@ -105,15 +105,46 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.MovePosition((Vector2)rb.transform.position + ((movementValues + velocity) * Time.fixedDeltaTime));
-        
-        if (velocity.magnitude > 0)
+        //rigidbody.MovePosition(rigidbody.position + (movementValues * Time.fixedDeltaTime));
+        //Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), 0);
+        //AddForceWithinLimits2d(rigidbody, moveDirection, movementSpeed * 500, movementSpeed);
+
+        /*
+        if (movementValues.magnitude > 0)
         {
-            // Slowly reduce velocity magnitude
-            velocity -= velocityDecay * Time.fixedDeltaTime;
-            velocity.x = Mathf.Max(0, velocity.x);
-            velocity.y = Mathf.Max(0, velocity.y);
+            Vector2 position2D = rigidbody.position;
+            Vector2 deltaMovement = (rigidbody.velocity + movementValues) * Time.fixedDeltaTime;
+            rigidbody.MovePosition(position2D + deltaMovement);
         }
-        
+        */
+
+
+        Vector2 currentVelocity = rigidbody.velocity;
+        if (movementValues.x > 0)
+        {
+            currentVelocity.x = Mathf.Max(currentVelocity.x, movementValues.x);
+        }
+        else if (movementValues.x < 0)
+        {
+            currentVelocity.x = Mathf.Min(currentVelocity.x, movementValues.x);
+        }
+        if (movementValues.y > 0)
+        {
+            currentVelocity.y = Mathf.Max(currentVelocity.y, movementValues.y);
+        }
+        else if (movementValues.y < 0)
+        {
+            currentVelocity.y = Mathf.Min(currentVelocity.y, movementValues.y);
+        }
+        rigidbody.velocity = currentVelocity;
     }
+    /*
+    public static void AddForceWithinLimits2d(Rigidbody2D rb, Vector2 direction, float force, float maxVelocity)
+    {
+        float clampedAcceleration = Mathf.Clamp(force, 0f, Mathf​.Max(0, maxVelocity - rb.velocity.magnitude));
+        rb.velocity += direction.normalized * clampedAcceleration;
+    }
+    */
 }
+
+
