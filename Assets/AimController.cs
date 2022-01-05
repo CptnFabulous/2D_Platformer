@@ -28,7 +28,7 @@ public class AimController : MonoBehaviour
     {
         get
         {
-            return Vector2.SignedAngle(Vector2.up, aimDirection) + 90;
+            return Vector2.SignedAngle(Vector2.right, aimDirection);
         }
     }
     
@@ -42,8 +42,13 @@ public class AimController : MonoBehaviour
     {
         reticlePosition = Input.mousePosition;
         aimDirection = (reticlePosition - playerCamera.WorldToScreenPoint(weaponAxis.position)).normalized;
-        
-        weaponAxis.LookAt(weaponAxis.position + aimDirection3D, transform.up);
+
+        float angle = AimAngle;
+        weaponAxis.localRotation = Quaternion.Euler(0, 0, angle);
+
+        Vector3 gunEulerAngles = new Vector3();
+        gunEulerAngles.x = (angle > 90 || angle < -90) ? 180 : 0;
+        gun.transform.localEulerAngles = gunEulerAngles;
 
         if (Input.GetKey(KeyCode.Mouse0) && gun != null)
         {

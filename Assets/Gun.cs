@@ -113,6 +113,8 @@ public class Gun : MonoBehaviour
     }
     public void Drop()
     {
+        // Resets euler angles
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
         meter.gameObject.SetActive(false);
         meter.transform.parent = transform;
         transform.parent = null;
