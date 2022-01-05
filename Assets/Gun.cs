@@ -6,9 +6,11 @@ using UnityEngine.Events;
 public class Gun : MonoBehaviour
 {
     [Header("General")]
-    public UnityEvent onShoot;
+    public Collider2D collider;
+    public Rigidbody2D rigidbody;
 
     [Header("DPS")]
+    public UnityEvent onShoot;
     public int projectileCount = 1;
     public float roundsPerMinute = 600;
     public float shotDelay
@@ -98,6 +100,8 @@ public class Gun : MonoBehaviour
 
     public void Pickup(AimController newPlayer)
     {
+        rigidbody.bodyType = RigidbodyType2D.Static;
+        collider.enabled = false;
         transform.parent = newPlayer.weaponAxis;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -112,5 +116,7 @@ public class Gun : MonoBehaviour
         meter.gameObject.SetActive(false);
         meter.transform.parent = transform;
         transform.parent = null;
+        rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        collider.enabled = true;
     }
 }

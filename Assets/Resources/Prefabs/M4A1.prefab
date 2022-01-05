@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0215455ccb1a2e945b53863bc21dc199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 5180924552698189763}
+  rigidbody: {fileID: 4849817733609021749}
   onShoot:
     m_PersistentCalls:
       m_Calls: []
