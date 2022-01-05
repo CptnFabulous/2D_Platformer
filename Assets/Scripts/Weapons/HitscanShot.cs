@@ -60,4 +60,12 @@ public class HitscanShot : GunFireEffect
 
 
 
+    public void SpawnDebris(ParticleSystem debris)
+    {
+        ParticleSystem p = Instantiate(debris);
+        p.gameObject.SetActive(true);
+        p.transform.position = lastHit.point;
+        p.transform.rotation = Quaternion.Euler(0, 0, Vector2.SignedAngle(Vector2.up, lastHit.normal));
+        p.Play();
+    }
 }
