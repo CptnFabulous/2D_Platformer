@@ -100,11 +100,17 @@ public class Gun : MonoBehaviour
 
     public void Pickup(AimController newPlayer)
     {
-        rigidbody.bodyType = RigidbodyType2D.Static;
+        if (newPlayer.gun != null) // Do not assign if player is already holding a gun
+        {
+            Drop();
+            return;
+        }
+        rigidbody.simulated = false;
         collider.enabled = false;
         transform.parent = newPlayer.weaponAxis;
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        newPlayer.gun = this;
 
         meter.gameObject.SetActive(true);
         meter.transform.parent = newPlayer.weaponHUDSocket;
@@ -113,12 +119,18 @@ public class Gun : MonoBehaviour
     }
     public void Drop()
     {
+        if (PlayerUsing != null)
+        {
+            PlayerUsing.gun = null;
+        }
+
         // Resets euler angles
         transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
+
         meter.gameObject.SetActive(false);
         meter.transform.parent = transform;
         transform.parent = null;
-        rigidbody.bodyType = RigidbodyType2D.Dynamic;
+        rigidbody.simulated = true;
         collider.enabled = true;
     }
 }
