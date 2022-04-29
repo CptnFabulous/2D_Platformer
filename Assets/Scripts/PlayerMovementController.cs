@@ -96,6 +96,7 @@ public class PlayerMovementController : MonoBehaviour
 
         newVelocity.x = movementValues.x * movementSpeed; // Set velocity to movement direction and speed
 
+        newVelocity.y = Mathf.Clamp(newVelocity.y, -maxFallSpeed, Mathf.Infinity); // Clamp vertical velocity
 
         localVelocity = newVelocity; // Set vertical velocity
     }
