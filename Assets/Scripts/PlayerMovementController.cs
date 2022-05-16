@@ -31,12 +31,17 @@ public class PlayerMovementController : MonoBehaviour
     [Header("Gravity")]
     public float gravityScale = 2;
     [Min(0)] public float maxFallSpeed = 10;
+    /*
+    [Header("Wall-jumping")]
+    public float wallJumpForce = 5;
+    */
 
     Rigidbody2D rb;
     CapsuleCollider2D collider;
     Vector2 movementValues; // The current movement input
 
     public RaycastHit2D groundData { get; private set; } // The thing the player is currently standing on
+    //public RaycastHit2D wallData { get; private set; } // Whatever wall the player is touching. Returns the left wall if somehow touching both sides
     float lastTimeGrounded;
 
     float lastTimeJumpAttempted;
@@ -66,6 +71,7 @@ public class PlayerMovementController : MonoBehaviour
             return true;
         }
     }
+    //public bool isTouchingWall => wallData.collider != null;
     #endregion
 
     #region Input functions
@@ -102,11 +108,16 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGrounding();
+        //CheckIfTouchingWall();
         CheckJump();
         CheckJumpApex();
 
         Vector2 newVelocity = localVelocity;
 
+        /*
+        float acceleratedMovement = Mathf.MoveTowards(localVelocity.x, movementValues.x * movementSpeed, acceleration * Time.fixedDeltaTime);
+        localVelocity = new Vector2(acceleratedMovement, localVelocity.y);
+        */
         newVelocity.x = movementValues.x * movementSpeed; // Set velocity to movement direction and speed
 
         newVelocity.y = Mathf.Clamp(newVelocity.y, -maxFallSpeed, Mathf.Infinity); // Clamp vertical velocity
@@ -125,6 +136,17 @@ public class PlayerMovementController : MonoBehaviour
             lastTimeGrounded = Time.time;
         }
     }
+    /*
+    void CheckIfTouchingWall()
+    {
+        Vector2 box = worldColliderSize;
+        box.x *= 0.1f;
+        RaycastHit2D leftWall = Physics2D.BoxCast(collider.bounds.center, box, transform.eulerAngles.z, -transform.right, wallCheckLength, terrainDetection);
+        RaycastHit2D rightWall = Physics2D.BoxCast(collider.bounds.center, box, transform.eulerAngles.z, transform.right, wallCheckLength, terrainDetection);
+
+        wallData = leftWall.collider != null ? leftWall : rightWall;
+    }
+    */
     void CheckJump()
     {
         if (Time.time - lastTimeJumpAttempted > jumpBufferTime) return; // Is the buffer still active since the player pressed the jump button?
