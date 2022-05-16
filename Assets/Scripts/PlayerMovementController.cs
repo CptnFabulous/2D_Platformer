@@ -22,6 +22,7 @@ public class PlayerMovementController : MonoBehaviour
 
     [Header("Jumping")]
     [Min(0)] public float jumpForce = 5;
+    [Min(0)] public float jumpHoldTime = 0.5f;
     [Min(0)] public float jumpCooldown = 0.5f;
     [Min(0)] public float coyoteTime = 0.1f;
     [Min(0)] public float jumpBufferTime = 0.1f;
@@ -77,6 +78,18 @@ public class PlayerMovementController : MonoBehaviour
         if (input.isPressed)
         {
             lastTimeJumpAttempted = Time.time;
+        }
+        else // If after jumping, player releases button before jumpPressTime
+        {
+            // Check time of released compared to pressed, and alter velocity accordingly
+            float jumpHeldTimeProportion = (Time.time - lastTimeJumped) / jumpHoldTime; // If value is over 1, jump was held for full period of time
+            if (jumpHeldTimeProportion < 1)
+            {
+                float forceToSubtract = jumpForce * (1 - jumpHeldTimeProportion);
+                Vector2 v = localVelocity;
+                v.y -= forceToSubtract;
+                localVelocity = v;
+            }
         }
     }
     #endregion
