@@ -177,4 +177,27 @@ public class PlayerMovementController : MonoBehaviour
             rb.gravityScale = inApexTime ? 0 : gravityScale;
         }
     }
+
+    /// <summary>
+    /// EXPERIMENTAL AND UNTESTED: This function is meant to alter the player's velocity in such a way that it doesn't override other, greater forces acting on it. This is so if the player is knocked in a direction by a larger force, they cannot immediately negate it by making any movement.
+    /// </summary>
+    /// <param name="value"></param>
+    void ModifyVelocity(Vector2 value)
+    {
+        Vector2 velocity = localVelocity;
+
+        // Set the desired force for a direction only if that direction's magnitude is greater than the current value.
+        // If it's already higher, then there's no need to move any faster
+        if (Mathf.Abs(velocity.x) < Mathf.Abs(value.x))
+        {
+            velocity.x = value.x;
+        }
+        if (Mathf.Abs(velocity.y) < Mathf.Abs(value.y))
+        {
+            velocity.y = value.y;
+        }
+
+        localVelocity = velocity;
+    }
+
 }
